@@ -1,5 +1,7 @@
 //import do pacote java.net para manipular as requisições para a APO
+import java.io.InputStream;
 import java.net.URI;
+import java.net.URL;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -42,11 +44,24 @@ public class App {
         //primeiro item da lista de filmes
         System.out.println(listaDeFilmes.get(0));
 
+
+        StickerFactory factory = new StickerFactory();
+
         //percorre a lista retornando os valores de cada atributo por item
         for (Map<String,String> filme : listaDeFilmes) {
-            System.out.println(filme.get("title"));
-            System.out.println(filme.get("image"));
-            System.out.println(filme.get("imDbRating"));
+            
+            //obtem e armazena o titulo e a imagem
+            String urlImagem = filme.get("image");
+            InputStream inputStream = new URL(urlImagem).openStream();
+            String titulo = filme.get("title");
+            String extensao = ".png";
+            String nomeArquivo = titulo+extensao;
+            
+            //gerando o sticker a partir da classe factory passando a url da imagem e o nome do arquivo como parâmetros
+            factory.generate(inputStream, nomeArquivo);    
+            
+            //acompanhando no terminal
+            System.out.println(titulo);
             System.out.println();
         }
     }
