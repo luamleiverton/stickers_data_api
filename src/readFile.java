@@ -5,7 +5,7 @@ import java.io.IOException;
 public class readFile {
   
   public String obterToken() throws IOException {
-    String file ="/home/luam/java/imersao_alura_java/imdb_top_movies/src/token.txt";
+    String file ="/path/src/token.txt";
     String result = null;
 
     DataInputStream reader = new DataInputStream(new FileInputStream(file));

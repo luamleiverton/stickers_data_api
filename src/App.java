@@ -51,7 +51,7 @@ public class App {
         for (Map<String,String> filme : listaDeFilmes) {
             
             //obtem e armazena o titulo e a imagem
-            String urlImagem = filme.get("image");
+            String urlImagem = filme.get("image").replaceAll("(@+)(.*).jpg$", "$1.jpg");
             InputStream inputStream = new URL(urlImagem).openStream();
             String titulo = filme.get("title");
             String extensao = ".png";
