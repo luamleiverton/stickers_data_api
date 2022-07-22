@@ -5,7 +5,7 @@ import java.io.IOException;
 public class readFile {
   
   public String obterToken() throws IOException {
-    String file ="/path/src/token.txt";
+    String file ="path/src/token.txt";
     String result = null;
 
     DataInputStream reader = new DataInputStream(new FileInputStream(file));
